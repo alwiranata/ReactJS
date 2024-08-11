@@ -1,0 +1,16 @@
+tr.highlight td{
+    background-color: beige;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr td ,
+tr th{
+    padding: 3px;
+    border: 1px solid black;
+}
+tr th {
+    background-color: beige ;
+}
