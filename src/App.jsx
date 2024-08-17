@@ -1,12 +1,9 @@
-import MenuResto from "./MenuResto"
-import Header from "./Header"
-
+import Mood from "./Mood"
 function App() {
 	return (
-		<>
-			<Header />
-			<MenuResto />
-		</>
+		<div>
+			<Mood day='sunday' />
+		</div>
 	)
 }
 
