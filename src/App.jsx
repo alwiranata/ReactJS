@@ -1,15 +1,9 @@
-import Mood from "./Mood"
-function App() {
+import Button from "./Button"
+
+const App = () => {
 	return (
 		<div>
-			<Mood
-				day='Sunday'
-				Mood='Sad'
-			/>
-			<Mood
-				day='Friday'
-				Mood='Happy'
-			/>
+			<Button />
 		</div>
 	)
 }
