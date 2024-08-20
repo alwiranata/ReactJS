@@ -1,16 +1,22 @@
+import {useEffect} from "react"
 import {useState} from "react"
 
 const Button = () => {
-	const [counter, setCounter] = useState(0)
-	let newCounter = 0
-	function ClickHandler(name) {
-		newCounter = counter + 1
-		setCounter(newCounter)
-		console.log(`Hello ${name} ID : ${newCounter}`)
-	}
+	const [like, setLike] = useState(0)
+	const [dislike, setDislike] = useState(0)
+	useEffect(() => {
+		console.log(`Like ke ${like} | Dislike ke ${dislike}`)
+	}, [like, dislike])
 	return (
 		<div>
-			<button onClick={() => ClickHandler("aldo")}>Klik Here {counter}</button>
+			<button
+				onClick={() => {
+					setDislike(dislike + 1)
+				}}
+			>
+				Dislike {dislike}
+			</button>
+			<button onClick={() => setLike(like + 1)}> Like {like}</button>
 		</div>
 	)
 }
