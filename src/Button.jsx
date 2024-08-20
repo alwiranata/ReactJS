@@ -6,7 +6,7 @@ const Button = () => {
 	const [dislike, setDislike] = useState(0)
 	useEffect(() => {
 		console.log(`Like ke ${like} | Dislike ke ${dislike}`)
-	}, [like, dislike])
+	}, [])
 	return (
 		<div>
 			<button
