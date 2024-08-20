@@ -1,24 +1,30 @@
-import {useMemo} from "react"
 import {useState} from "react"
+import ChildMemo from "./ChildMemo"
 
 const App = () => {
 	const [like, setLike] = useState(0)
 	const [suscriber, setSuscriber] = useState(0)
+	const [name, setName] = useState("aldowiranata17")
 
-	function msg() {
-		console.log("Message rendered")
-		return like < 10 ? "like kurang dari 10" : "like lebih  dari 10"
+	function handlerName() {
+		let chanelName = ""
+		if (name == "aldowiranata17") {
+			chanelName = "awiranata263"
+		} else {
+			chanelName = "aldowiranata17"
+		}
+		setName(chanelName)
+		console.log(`setname run ${name} `)
 	}
-
-	const displayLike = useMemo(() => msg(), [like])
 
 	return (
 		<div>
 			<button onClick={() => setLike(like + 1)}>Like {like} </button>
-			{displayLike}
 			<button onClick={() => setSuscriber(suscriber + 1)}>
 				Suscriber {suscriber}
 			</button>
+			<ChildMemo name={name} />
+			<button onClick={handlerName}>Change Name</button>
 		</div>
 	)
 }
