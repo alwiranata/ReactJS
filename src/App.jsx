@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useCallback, useState} from "react"
 import ChildMemo from "./ChildMemo"
 
 const App = () => {
@@ -6,7 +6,7 @@ const App = () => {
 	const [suscriber, setSuscriber] = useState(0)
 	const [name, setName] = useState("aldowiranata17")
 
-	function handlerName() {
+	const handlerName = useCallback(() => {
 		let chanelName = ""
 		if (name == "aldowiranata17") {
 			chanelName = "awiranata263"
@@ -14,8 +14,8 @@ const App = () => {
 			chanelName = "aldowiranata17"
 		}
 		setName(chanelName)
-		console.log(`setname run ${name} `)
-	}
+		console.log(` setname run ${name} `)
+	}, [name])
 
 	return (
 		<div>
@@ -23,8 +23,10 @@ const App = () => {
 			<button onClick={() => setSuscriber(suscriber + 1)}>
 				Suscriber {suscriber}
 			</button>
-			<ChildMemo name={name} />
-			<button onClick={handlerName}>Change Name</button>
+			<ChildMemo
+				name={name}
+				aksi={handlerName}
+			/>
 		</div>
 	)
 }

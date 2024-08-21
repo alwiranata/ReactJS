@@ -1,10 +1,11 @@
 import {memo} from "react"
 
-const ChildMemo = (props) => {
-	console.log(" Child component rendering")
+function ChildMemo(props) {
+	console.log("rendering")
 	return (
 		<div>
 			<h2>Instagram : {props.name}</h2>
+			<button onClick={props.aksi}>Change Name</button>
 		</div>
 	)
 }
