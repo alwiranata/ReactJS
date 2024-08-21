@@ -1,28 +1,30 @@
-import {useRef} from "react"
+import {useContext} from "react"
+import {createContext} from "react"
 
-const App = () => {
-	const msg = useRef(null)
-	const displayMsg = useRef(null)
-
-	function clickHandler() {
-		console.log(msg.current.value)
-		displayMsg.current.innerHTML = msg.current.value
-		displayMsg.current.style.color = "#abd"
-	}
+function Child1() {
+	return <Child2 />
+}
+function Child2() {
+	return <Child3 />
+}
+function Child3() {
+	const data = useContext(Context)
 	return (
-		<>
-			<div>
-				<input
-					type='text/'
-					ref={msg}
-					placeholder='Kirim pesan kamu'
-				/>
-			</div>
-			<div>
-				<button onClick={clickHandler}>Klik Here</button>
-			</div>
-			<div ref={displayMsg}></div>
-		</>
+		<div>
+			Hello dari {data.nama} umur {data.old}
+		</div>
+	)
+}
+
+const Context = createContext()
+
+function App() {
+	return (
+		<div>
+			<Context.Provider value={{nama: "aldo", old: 17}}>
+				<Child1 />
+			</Context.Provider>
+		</div>
 	)
 }
 
