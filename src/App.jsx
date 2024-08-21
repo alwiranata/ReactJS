@@ -1,33 +1,28 @@
-import {useCallback, useState} from "react"
-import ChildMemo from "./ChildMemo"
+import {useRef} from "react"
 
 const App = () => {
-	const [like, setLike] = useState(0)
-	const [suscriber, setSuscriber] = useState(0)
-	const [name, setName] = useState("aldowiranata17")
+	const msg = useRef(null)
+	const displayMsg = useRef(null)
 
-	const handlerName = useCallback(() => {
-		let chanelName = ""
-		if (name == "aldowiranata17") {
-			chanelName = "awiranata263"
-		} else {
-			chanelName = "aldowiranata17"
-		}
-		setName(chanelName)
-		console.log(` setname run ${name} `)
-	}, [name])
-
+	function clickHandler() {
+		console.log(msg.current.value)
+		displayMsg.current.innerHTML = msg.current.value
+		displayMsg.current.style.color = "#abd"
+	}
 	return (
-		<div>
-			<button onClick={() => setLike(like + 1)}>Like {like} </button>
-			<button onClick={() => setSuscriber(suscriber + 1)}>
-				Suscriber {suscriber}
-			</button>
-			<ChildMemo
-				name={name}
-				aksi={handlerName}
-			/>
-		</div>
+		<>
+			<div>
+				<input
+					type='text/'
+					ref={msg}
+					placeholder='Kirim pesan kamu'
+				/>
+			</div>
+			<div>
+				<button onClick={clickHandler}>Klik Here</button>
+			</div>
+			<div ref={displayMsg}></div>
+		</>
 	)
 }
 
